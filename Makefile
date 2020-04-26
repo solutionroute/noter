@@ -3,12 +3,7 @@
 PROJECT = noter
 PID_FILE = /tmp/$(PROJECT).pid
 
-testing:
-	# get rid of this testing function later
-	@echo $(PROJECT)
-	@echo $(PID_FILE)
-
-.PHONY: css cssdev cssall build run restart watch
+.PHONY: css cssdev cssall kill build run restart watch watchall
 
 css:
 	@echo Compiling a purged and minified production $(PROJECT).css
@@ -25,9 +20,12 @@ cssall:
 kill: 
 	-kill `cat $(PID_FILE)`
 	-rm $(PID_FILE)
+	# byproduct occasionally left, I'm running WSL2/VSCODE
+	# -killall cmd
+	# -rm $(PROJECT)
 
 build:
-	go build -o $(PROJECT) cmd/main.go
+	@go build -o $(PROJECT) cmd/main.go
 
 run:
 	./$(PROJECT) & echo $$! > $(PID_FILE)
@@ -36,6 +34,11 @@ restart: kill build run
 	@echo Restarting server.
 
 watch: 
-	@echo Reloading server when source changes...
+	@echo Reloading server only when Go source changes...
+	@chokidar "**/*.go" --ignore "node_modules" --ignore ".git" --ignore "$(PROJECT)" \
+		--verbose --initial -c "make -s restart"
+
+watchall: 
+	@echo Reloading server when Go source **and** html changes, rebuilding CSS too
 	@chokidar "**/*.go" "**/*.html" --ignore "node_modules" --ignore ".git" --ignore "$(PROJECT)" \
-		--verbose --initial -c "make restart"
+		--verbose --initial -c "make css restart"

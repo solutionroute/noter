@@ -9,6 +9,7 @@
     "cssdev": "make cssdev",
     "cssall": "make cssall",
     "watch": "make watch",
+    "watchall": "make watchall",
     "kill": "make kill"
   },
   "repository": {
