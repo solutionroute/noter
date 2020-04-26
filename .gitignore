@@ -13,3 +13,13 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+# WIP thoughts
+WIPNOTES.md
+
+# Node related
+node_modules/
+
+# Temp app builds
+noter
+cmd/noter
