@@ -40,7 +40,7 @@ Explore within.
 `noter` makes use of [Tailwind CSS](https://tailwindcss.com), a *utility-first*
 CSS framework. A maximal (every class, and rather large) CSS file is included in the
 source for those who don't care to install the `node` toolchain required to
-produce a very trim app-specific CSS file. Simply copy `css/noter.all.css` to
+produce a very trim app-specific CSS file. Simply copy `http/static/noter.all.css` to
 `http/static/noter.css`. Alternatively you could use the Tailwind CDN
 ([see notes on the Tailwind site](https://tailwindcss.com/docs/installation/#using-tailwind-via-cdn)):
 

@@ -8,15 +8,19 @@ testing:
 	@echo $(PROJECT)
 	@echo $(PID_FILE)
 
-.PHONY: css cssmin build run restart watch
-
-cssmin:
-	@echo Compiling a purged and minified $(PROJECT).css
-	@postcss css/$(PROJECT).css -o http/static/$(PROJECT).css
+.PHONY: css cssdev cssall build run restart watch
 
 css:
-	@echo Compiling a maximal \(all classes unused or not\) $(PROJECT).css
+	@echo Compiling a purged and minified production $(PROJECT).css
+	@postcss css/$(PROJECT).css -o http/static/$(PROJECT).css
+
+cssdev:
+	@echo Compiling a maximal with comments $(PROJECT).css
 	@postcss css/$(PROJECT).css -o http/static/$(PROJECT).css --use tailwindcss 
+
+cssall:
+	@echo Compiling a maximal but minified $(PROJECT).css
+	@postcss css/$(PROJECT).css -o http/static/$(PROJECT).all.css 
 
 kill: 
 	-kill `cat $(PID_FILE)`

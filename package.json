@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "css": "make css",
-    "cssmin": "make cssmin",
+    "cssdev": "make cssdev",
+    "cssall": "make cssall",
     "watch": "make watch",
     "kill": "make kill"
   },
