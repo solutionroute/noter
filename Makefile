@@ -1,9 +1,25 @@
-# Makefile for noter, this could easily be adapted for any app.
+# Development convenience Makefile for noter, a Go language application.
 
-PROJECT = noter
+export PROJECT = noter
 PID_FILE = /tmp/$(PROJECT).pid
 
+# Include as environment variables for the make process an .env environment file if it exists.
+-include $(PROJECT).env
+export
+# .env example contents (noter -h to get full list of supported variables)
+## NOTE This does not get committed
+PREFIX=NOTER
+$(PREFIX)_HOST = 0.0.0.0
+$(PREFIX)_PORT = 8080
+$(PREFIX)_DBPATH = /tmp/$(PROJECT)-dev.db
+$(PREFIX)_TEMPLATES = /home/$(USER)/go/src/github.com/solutionroute/noter/http/templates
+$(PREFIX)_SECRET = iamAlittleTEApot!
+## end of .env file
+
 .PHONY: css cssdev cssall kill build run restart watch watchall
+
+testing:
+	env
 
 css:
 	@echo Compiling a purged and minified production $(PROJECT).css
