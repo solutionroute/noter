@@ -8,16 +8,19 @@ PID_FILE = /tmp/$(PROJECT).pid
 -include $(PROJECT).env
 export
 # .env file example contents:
-## .env files should not get committed to source control.
-PREFIX=NOTER
-$(PREFIX)_HOST = 0.0.0.0
-$(PREFIX)_PORT = 8080
-$(PREFIX)_DBPATH = /tmp/$(PROJECT)-dev.db
-$(PREFIX)_TEMPLATES = /home/$(USER)/go/src/github.com/solutionroute/noter/http/templates
-(PREFIX)_SECRET = YouWouldChangeThIsOfCourse
-## end of .env file
+## .env files should not get committed to source control. ##
+# PREFIX=NOTER
+# $(PREFIX)_HOST = 0.0.0.0
+# $(PREFIX)_PORT = 8080
+# $(PREFIX)_DBPATH = /tmp/$(PROJECT)-dev.db
+# $(PREFIX)_TEMPLATES = /home/$(USER)/go/src/github.com/solutionroute/noter/http/templates
+# (PREFIX)_SECRET = YouWouldChangeThIsOfCourse
+## end of .env file ##
 
 .PHONY: css cssdev cssall kill build run restart watch watchall
+
+testing: 
+	env
 
 css:
 	@echo Compiling a purged and minified production $(PROJECT).css

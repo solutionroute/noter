@@ -23,3 +23,6 @@ node_modules/
 # Temp app builds
 noter
 cmd/noter
+
+# dev or production .env file
+noter.env
