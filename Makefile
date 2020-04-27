@@ -3,23 +3,21 @@
 export PROJECT = noter
 PID_FILE = /tmp/$(PROJECT).pid
 
+# Keeping config simple for dev and production:
 # Include as environment variables for the make process an .env environment file if it exists.
 -include $(PROJECT).env
 export
-# .env example contents (noter -h to get full list of supported variables)
-## NOTE This does not get committed
+# .env file example contents:
+## .env files should not get committed to source control.
 PREFIX=NOTER
 $(PREFIX)_HOST = 0.0.0.0
 $(PREFIX)_PORT = 8080
 $(PREFIX)_DBPATH = /tmp/$(PROJECT)-dev.db
 $(PREFIX)_TEMPLATES = /home/$(USER)/go/src/github.com/solutionroute/noter/http/templates
-$(PREFIX)_SECRET = iamAlittleTEApot!
+(PREFIX)_SECRET = YouWouldChangeThIsOfCourse
 ## end of .env file
 
 .PHONY: css cssdev cssall kill build run restart watch watchall
-
-testing:
-	env
 
 css:
 	@echo Compiling a purged and minified production $(PROJECT).css
@@ -36,9 +34,6 @@ cssall:
 kill: 
 	-kill `cat $(PID_FILE)`
 	-rm $(PID_FILE)
-	# byproduct occasionally left, I'm running WSL2/VSCODE
-	# -killall cmd
-	# -rm $(PROJECT)
 
 build:
 	@go build -o $(PROJECT) cmd/main.go
