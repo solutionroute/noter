@@ -13,6 +13,7 @@ export
 # $(PREFIX)_HOST = 0.0.0.0
 # $(PREFIX)_PORT = 8080
 # $(PREFIX)_DBPATH = /tmp/$(PROJECT)-dev.db
+# $(PREFIX)_STATIC = = /home/$(USER)/go/src/github.com/solutionroute/noter/http/static
 # $(PREFIX)_TEMPLATES = /home/$(USER)/go/src/github.com/solutionroute/noter/http/templates
 # (PREFIX)_SECRET = YouWouldChangeThIsOfCourse
 ## end of .env file ##
