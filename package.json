@@ -8,6 +8,8 @@
     "css": "make css",
     "cssdev": "make cssdev",
     "cssall": "make cssall",
+    "build": "make build",
+    "run": "make run",
     "watch": "make watch",
     "watchall": "make watchall",
     "kill": "make kill"
