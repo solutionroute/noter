@@ -8,10 +8,10 @@ links and attachments is managed within a single-file
 pointed to reside on your filesystem.
 
 > **Note**: Source is not yet available; this README is a bit of a spec document
-> to guide my efforts while I sketch out the app basics (at time of writing,
-> approaching mid-May in the pandemic year of 2020). Currently there's not much
-> to see here except for a possibly useful `Makefile` and `package.json` showing
-> Go code reloading and Tailwind CSS  
+> while I sketch out the app basics (at time of writing, approaching mid-May in
+> the pandemic year of 2020). Currently there's not much to see here except for
+> a possibly useful `Makefile` and `package.json` showing Go code reloading and
+> Tailwind CSS  
 > processing.
 
 ## Installation
@@ -28,7 +28,7 @@ Explore within.
     NOTER_PORT=1234 noter
 
 The application is configured using using zero or more of the following
-environment variables:
+enviroment variables:
 
     # Supported environment variables showing defaults:
     NOTER_HOST = 0.0.0.0
@@ -54,11 +54,14 @@ build a custom CSS.
 Noter assumes the app is installed in your GOPATH and will access its html
 templates there by default. Simply copy all of these to your own "theme"
 directory and point to your customized set by setting the NOTER_TEMPLATES
-envioronment variable.# Forking or Modifying Noter
+environment variable.
+
+* TODO: Allow for simple theming where one or more user-provided html-templates
+  will be used in preference over the stock template.
+
+## Forking or Modifying Noter
 
 You'll possibly need to update dependencies.
-# Forking or Modifying Noter I
-have a bit of spare time. I wrote `noter` primarily to improve my grasp of Go,
-and to solve a need.
 
-I'm aiming for not-complex, understandable and simple to deploy.
+    # cd noter
+    go mod tidy
